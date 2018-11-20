@@ -49,7 +49,7 @@ export default function createStore(reducer, preloadedState, enhancer) {
     if (typeof enhancer !== 'function') {
       throw new Error('Expected the enhancer to be a function.')
     }
-
+    //插件
     return enhancer(createStore)(reducer, preloadedState)
   }
 
@@ -245,6 +245,7 @@ export default function createStore(reducer, preloadedState, enhancer) {
        * emission of values from the observable.
        */
       subscribe(observer) {
+        console.log(123)
         if (typeof observer !== 'object' || observer === null) {
           throw new TypeError('Expected the observer to be an object.')
         }

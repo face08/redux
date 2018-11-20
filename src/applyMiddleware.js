@@ -16,8 +16,12 @@ import compose from './compose'
  * @param {...Function} middlewares The middleware chain to be applied.
  * @returns {Function} A store enhancer applying the middleware.
  */
+//middlewares 插件数组
 export default function applyMiddleware(...middlewares) {
+
+  //返回函数，供createStore调用
   return createStore => (...args) => {
+    //先创建store
     const store = createStore(...args)
     let dispatch = () => {
       throw new Error(
@@ -26,6 +30,7 @@ export default function applyMiddleware(...middlewares) {
       )
     }
 
+    console.log(1111)
     const middlewareAPI = {
       getState: store.getState,
       dispatch: (...args) => dispatch(...args)

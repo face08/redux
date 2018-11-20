@@ -20,3 +20,27 @@ export default function compose(...funcs) {
 
   return funcs.reduce((a, b) => (...args) => a(b(...args)))
 }
+
+/*
+
+var a = function (p){
+    console.log(p)
+    return p+=2;
+}
+
+var b = function(p){
+    console.log(p)
+    return p*=3
+}
+
+var arr=[a,b]
+
+var aaa = arr.reduce(function (a, b) {
+    return function () {
+      return a(b.apply(void 0, arguments));
+    };
+  });
+
+ aaa(5)
+
+ */

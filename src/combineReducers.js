@@ -112,6 +112,8 @@ function assertReducerShape(reducers) {
  * @returns {Function} A reducer function that invokes every reducer inside the
  * passed object, and builds a state object with the same shape.
  */
+
+//合并reducer
 export default function combineReducers(reducers) {
   const reducerKeys = Object.keys(reducers)
   const finalReducers = {}
@@ -165,7 +167,7 @@ export default function combineReducers(reducers) {
       const key = finalReducerKeys[i]
       const reducer = finalReducers[key]
       const previousStateForKey = state[key]
-      const nextStateForKey = reducer(previousStateForKey, action)
+      const nextStateForKey = reducer(previousStateForKey, action) //执行自定义reducer
       if (typeof nextStateForKey === 'undefined') {
         const errorMessage = getUndefinedStateErrorMessage(key, action)
         throw new Error(errorMessage)
